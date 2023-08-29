@@ -1,0 +1,9 @@
+{
+	"name": "ADF-Bens",
+	"location": "uksouth",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "40673077-814e-43ea-9e0a-ad579edcfde7",
+		"tenantId": "9b825890-427f-47b4-a8c3-cd890c1ea530"
+	}
+}
