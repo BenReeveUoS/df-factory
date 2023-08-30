@@ -1,0 +1,24 @@
+{
+	"name": "StorageTrigger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "14-Metrics",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/stagingmetric/blobs/PT1H",
+			"ignoreEmptyBlobs": false,
+			"scope": "/subscriptions/15315388-2a8e-4aa6-af96-d1780b61ac8a/resourceGroups/data-grp/providers/Microsoft.Storage/storageAccounts/bensdatastorage",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}
