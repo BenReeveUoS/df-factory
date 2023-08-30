@@ -1,0 +1,48 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "ADF-BenTest"
+		},
+		"BensDataStorage_accountKey": {
+			"value": ""
+		},
+		"appdb_service_connectionString": {
+			"value": ""
+		},
+		"appvm_server_password": {
+			"value": ""
+		},
+		"bens_pooldb_service_connectionString": {
+			"value": ""
+		},
+		"bensstorage1_accountKey": {
+			"value": ""
+		},
+		"bensstorage1_service_accountKey": {
+			"value": ""
+		},
+		"BensDataStorage_properties_typeProperties_url": {
+			"value": "https://bensdatastorage.dfs.core.windows.net/"
+		},
+		"appvm_server_properties_typeProperties_host": {
+			"value": "D:\\nginx-1.24.0\\logs"
+		},
+		"appvm_server_properties_typeProperties_userId": {
+			"value": "adminBen"
+		},
+		"bensstorage1_properties_typeProperties_url": {
+			"value": "https://bensstorage1.dfs.core.windows.net/"
+		},
+		"bensstorage1_service_properties_typeProperties_url": {
+			"value": "https://bensstorage1.dfs.core.windows.net/"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
