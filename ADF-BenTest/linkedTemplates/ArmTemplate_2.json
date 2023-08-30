@@ -1575,6 +1575,7 @@
 						"     allowSchemaDrift: true,",
 						"     validateSchema: false,",
 						"     ignoreNoFilesFound: false,",
+						"     purgeFiles: true,",
 						"     documentForm: 'documentPerLine') ~> stagingmetric",
 						"stagingmetric select(mapColumn(",
 						"          average,",
