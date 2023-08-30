@@ -1616,7 +1616,14 @@
 					{
 						"name": "dtMetrics",
 						"type": "ExecuteDataFlow",
-						"dependsOn": [],
+						"dependsOn": [
+							{
+								"activity": "Copy data files to staging",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
 						"policy": {
 							"timeout": "0.12:00:00",
 							"retry": 0,
@@ -1762,6 +1769,58 @@
 								"enablePartitionDiscovery": false
 							}
 						}
+					},
+					{
+						"name": "Copy data files to staging",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "JsonSource",
+								"storeSettings": {
+									"type": "AzureBlobFSReadSettings",
+									"recursive": true,
+									"wildcardFileName": "*.json",
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "JsonReadSettings"
+								}
+							},
+							"sink": {
+								"type": "JsonSink",
+								"storeSettings": {
+									"type": "AzureBlobFSWriteSettings",
+									"copyBehavior": "MergeFiles"
+								},
+								"formatSettings": {
+									"type": "JsonWriteSettings"
+								}
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "InsightsMetricsData",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "stagingmetricdataset",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
 					}
 				],
 				"policy": {
@@ -1773,7 +1832,9 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/dataflows/08_dataflow_metrics')]",
 				"[concat(variables('factoryId'), '/datasets/StagtingOutput')]",
-				"[concat(variables('factoryId'), '/datasets/WebMetrics')]"
+				"[concat(variables('factoryId'), '/datasets/WebMetrics')]",
+				"[concat(variables('factoryId'), '/datasets/InsightsMetricsData')]",
+				"[concat(variables('factoryId'), '/datasets/stagingmetricdataset')]"
 			]
 		},
 		{
@@ -2959,6 +3020,30 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/appvm_server')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/InsightsMetricsData')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "BensDataStorage",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": "resourceId=/SUBSCRIPTIONS/070BBD99-F279-4DD9-BB63-56424A93FF44/RESOURCEGROUPS/APP-GRP/PROVIDERS/MICROSOFT.WEB/SITES/BENSWEBAPP",
+						"fileSystem": "insights-metrics-pt1m"
+					}
+				},
+				"schema": {}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/BensDataStorage')]"
 			]
 		},
 		{
