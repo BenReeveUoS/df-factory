@@ -1,0 +1,19 @@
+{
+	"name": "InsightsMetricsData",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "BensDataStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "resourceId=/SUBSCRIPTIONS/070BBD99-F279-4DD9-BB63-56424A93FF44/RESOURCEGROUPS/APP-GRP/PROVIDERS/MICROSOFT.WEB/SITES/BENSWEBAPP",
+				"fileSystem": "insights-metrics-pt1m"
+			}
+		},
+		"schema": {}
+	}
+}
