@@ -37,6 +37,9 @@
 		},
 		"bensstorage1_service_properties_typeProperties_url": {
 			"value": "https://bensstorage1.dfs.core.windows.net/"
+		},
+		"StagingMetricTrigger_properties_typeProperties_scope": {
+			"value": "/subscriptions/15315388-2a8e-4aa6-af96-d1780b61ac8a/resourceGroups/data-grp/providers/Microsoft.Storage/storageAccounts/bensdatastorage"
 		}
 	}
 }

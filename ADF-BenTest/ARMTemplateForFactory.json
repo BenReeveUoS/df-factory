@@ -50,6 +50,10 @@
 		"bensstorage1_service_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://bensstorage1.dfs.core.windows.net/"
+		},
+		"StagingMetricTrigger_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/15315388-2a8e-4aa6-af96-d1780b61ac8a/resourceGroups/data-grp/providers/Microsoft.Storage/storageAccounts/bensdatastorage"
 		}
 	},
 	"variables": {
@@ -3997,6 +4001,36 @@
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/StagingMetricTrigger')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Stopped",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "14-Metrics",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "BlobEventsTrigger",
+				"typeProperties": {
+					"blobPathBeginsWith": "/stagingmetric/blobs/PT1H",
+					"ignoreEmptyBlobs": false,
+					"scope": "[parameters('StagingMetricTrigger_properties_typeProperties_scope')]",
+					"events": [
+						"Microsoft.Storage.BlobCreated"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/14-Metrics')]"
+			]
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/appvmRuntime')]",
