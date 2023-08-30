@@ -51,10 +51,6 @@
 			"type": "string",
 			"defaultValue": "https://bensstorage1.dfs.core.windows.net/"
 		},
-		"StagingMetricTrigger_properties_typeProperties_scope": {
-			"type": "string",
-			"defaultValue": "/subscriptions/15315388-2a8e-4aa6-af96-d1780b61ac8a/resourceGroups/data-grp/providers/Microsoft.Storage/storageAccounts/bensdatastorage"
-		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -172,9 +168,6 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
-					},
-					"StagingMetricTrigger_properties_typeProperties_scope": {
-						"value": "[parameters('StagingMetricTrigger_properties_typeProperties_scope')]"
 					}
 				}
 			},
