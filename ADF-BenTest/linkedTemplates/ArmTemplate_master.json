@@ -105,9 +105,6 @@
 					},
 					"bensstorage1_service_properties_typeProperties_url": {
 						"value": "[parameters('bensstorage1_service_properties_typeProperties_url')]"
-					},
-					"StagingMetricTrigger_properties_typeProperties_scope": {
-						"value": "[parameters('StagingMetricTrigger_properties_typeProperties_scope')]"
 					}
 				}
 			},
@@ -175,6 +172,9 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"StagingMetricTrigger_properties_typeProperties_scope": {
+						"value": "[parameters('StagingMetricTrigger_properties_typeProperties_scope')]"
 					}
 				}
 			},
