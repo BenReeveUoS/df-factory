@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "GetMetadataBlobs",
+				"name": "GetMetadataBlob",
 				"type": "GetMetadata",
 				"dependsOn": [],
 				"policy": {
@@ -37,7 +37,7 @@
 				"type": "ForEach",
 				"dependsOn": [
 					{
-						"activity": "GetMetadataBlobs",
+						"activity": "GetMetadataBlob",
 						"dependencyConditions": [
 							"Succeeded"
 						]
